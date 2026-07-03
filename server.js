@@ -4,10 +4,13 @@ import arbitreRoutes from './routes/arbitres.routes.js';
 import matchRoutes from './routes/match.routes.js';
 import affectationRoutes from './routes/affectation.routes.js';
 import { errorHandler } from './middlewares/error.middleware.js';
+import { logger } from './middlewares/logger.middleware.js';
+import 'dotenv/config'
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
+app.use(logger);
 app.use(express.json());
 
 app.use('/api/arbitres', arbitreRoutes);
