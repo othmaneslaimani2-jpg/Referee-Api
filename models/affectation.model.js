@@ -7,7 +7,7 @@ const Affectation = sequelize.define('Affectation', {
         primaryKey: true,
         autoIncrement: true
     },
-    arbitreID: {
+    arbitreId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
