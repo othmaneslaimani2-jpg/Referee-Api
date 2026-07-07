@@ -5,7 +5,8 @@ import matchRoutes from './routes/match.routes.js';
 import affectationRoutes from './routes/affectation.routes.js';
 import { errorHandler } from './middlewares/error.middleware.js';
 import { logger } from './middlewares/logger.middleware.js';
-import 'dotenv/config'
+import 'dotenv/config';
+import authRoutes from './routes/auth.routes.js'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,8 @@ app.use('/api/arbitres', arbitreRoutes);
 app.use('/api/matchs', matchRoutes);
 
 app.use('/api/affectations', affectationRoutes);
+
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the RefTech World Cup API! ⚽');
