@@ -1,0 +1,28 @@
+classDiagram
+    class Affectation {
+        +int id
+        +int arbitreId
+        +int matchId
+        +Role role
+    }
+
+    class Role {
+        <<enumeration>>
+        CENTRAL
+        ASSISTANT
+        VAR
+        AVAR
+        4e
+    }
+
+    class Arbitre {
+        +int id
+    }
+
+    class Match {
+        +int id
+    }
+
+    Affectation --> Role : uses
+    Arbitre "1" <-- "0..*" Affectation : references
+    Match "1" <-- "0..*" Affectation : references
