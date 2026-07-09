@@ -6,13 +6,14 @@ import {
     updateArbitre, 
     deleteArbitre 
 } from '../controllers/arbitre.controller.js';
+import { authenticate, authorize } from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
-router.post('/', createArbitre);
-router.get('/', getAllArbitres);
-router.get('/:id', getArbitreById);
-router.put('/:id', updateArbitre);
-router.delete('/:id', deleteArbitre);
+router.post('/', authenticate, authorize( 'admin', 'commissaire'), createArbitre);
+router.get('/', authenticate, authorize('admin', 'commissaire', 'arbitre','consultation' ), getAllArbitres);
+router.get('/:id', authenticate, authorize('admin', 'commissaire', 'arbitre', 'consultation'), getArbitreById);
+router.put('/:id', authenticate, authorize('admin', 'commissaire'), updateArbitre);
+router.delete('/:id', authenticate, authorize('admin') ,deleteArbitre);
 
 export default router;

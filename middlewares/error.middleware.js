@@ -7,7 +7,7 @@ export const errorHandler = (err, req, res, next) => {
             message: 'This referee is already assigned to this match with this exact role '
         });
     }
-    return res.status(err.status || 500).josn({
+    return res.status(err.status || 500).json({
         error: err.name || 'Internal Server Error',
         message: err.message || 'An unexpected error occured on the backend'
     });
